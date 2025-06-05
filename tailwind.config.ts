@@ -53,21 +53,22 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
+					DEFAULT: 'hsl(var(--sidebar))',
+					foreground: 'hsl(var(--sidebar-foreground))'
 				}
 			},
 			borderRadius: {
-				lg: 'var(--radius)',
-				md: 'calc(var(--radius) - 2px)',
-				sm: 'calc(var(--radius) - 4px)'
+        // PRD default is 'rounded-md' (0.375rem), which is set to --radius.
+        // Shadcn's typical lg is var(--radius), md is var(--radius) - 2px, sm is var(--radius) - 4px.
+        // By setting --radius to 0.375rem, these will scale accordingly.
+				lg: 'var(--radius)', // Becomes 0.375rem (Tailwind's 'md')
+				md: 'calc(var(--radius) - 2px)', // Becomes ~0.25rem (Tailwind's 'sm')
+				sm: 'calc(var(--radius) - 4px)', // Becomes ~0.125rem (Tailwind's 'xs')
+        full: '9999px' // Added from PRD
 			},
+      fontFamily: {
+        sans: ['var(--font-sans)', 'system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', '"Noto Sans"', 'sans-serif', '"Apple Color Emoji"', '"Segoe UI Emoji"', '"Segoe UI Symbol"', '"Noto Color Emoji"'],
+      },
 			keyframes: {
 				'accordion-down': {
 					from: {
